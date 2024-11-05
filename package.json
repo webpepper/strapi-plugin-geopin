@@ -1,0 +1,74 @@
+{
+  "name": "strapi-plugin-geopin",
+  "description": "PostGIS plugin for Strapi to store location data",
+  "license": "MIT",
+  "author": "webpepper <nix.php@gmail.com>",
+  "packageManager": "yarn@4.5.1",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/webpepper/strapi-plugin-geopin.git"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "exports": {
+    "./package.json": "./package.json",
+    "./strapi-admin": {
+      "types": "./dist/admin/src/index.d.ts",
+      "source": "./admin/src/index.ts",
+      "import": "./dist/admin/index.mjs",
+      "require": "./dist/admin/index.js",
+      "default": "./dist/admin/index.js"
+    },
+    "./strapi-server": {
+      "types": "./dist/server/src/index.d.ts",
+      "source": "./server/src/index.ts",
+      "import": "./dist/server/index.mjs",
+      "require": "./dist/server/index.js",
+      "default": "./dist/server/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "strapi-plugin build",
+    "watch": "strapi-plugin watch",
+    "watch:link": "strapi-plugin watch:link",
+    "verify": "strapi-plugin verify",
+    "test:ts:front": "run -T tsc -p admin/tsconfig.json",
+    "test:ts:back": "run -T tsc -p server/tsconfig.json"
+  },
+  "dependencies": {
+    "@strapi/design-system": "2.0.0-rc.12",
+    "@strapi/icons": "2.0.0-rc.12",
+    "leaflet": "1.9.4",
+    "react-leaflet": "4.2.1"
+  },
+  "devDependencies": {
+    "@strapi/sdk-plugin": "5.2.7",
+    "@strapi/strapi": "5.2.0",
+    "@strapi/typescript-utils": "5.2.0",
+    "@types/leaflet": "1.9.14",
+    "@types/react": "18.3.12",
+    "@types/react-dom": "18.3.1",
+    "prettier": "3.3.3",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "styled-components": "6.1.13",
+    "typescript": "5.6.3"
+  },
+  "peerDependencies": {
+    "@strapi/sdk-plugin": "^5.2.7",
+    "@strapi/strapi": "^5.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "styled-components": "^6.1.13"
+  },
+  "strapi": {
+    "kind": "plugin",
+    "name": "geopin",
+    "displayName": "geopin",
+    "description": "PostGIS plugin for Strapi to store location data"
+  }
+}
