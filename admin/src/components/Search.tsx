@@ -14,17 +14,14 @@ export default function LocationTextInput({
   const fetchData = async () => {
     setLoading(true);
 
-    const headers = new Headers({
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-      'User-Agent': `${pkg.name}/${pkg.version}`,
-    });
+    const headers = new Headers();
+    // important to avoid 403 errors and to follow requirements https://operations.osmfoundation.org/policies/nominatim/
+    headers.append('User-Agent', `${pkg.name}/${pkg.version}`);
 
     const url = encodeURI(`https://nominatim.openstreetmap.org/search?format=json&q=${address}`);
 
     try {
       const response = await fetch(url, {
-        method: 'GET',
         headers,
       });
       const data = await response.json();

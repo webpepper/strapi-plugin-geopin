@@ -4,7 +4,7 @@
   "license": "MIT",
   "author": "webpepper <nix.php@gmail.com>",
   "packageManager": "yarn@4.5.1",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/webpepper/strapi-plugin-geopin.git"
