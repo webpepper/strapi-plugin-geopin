@@ -1,5 +1,6 @@
 import { Button, Field, Grid, TextInput } from '@strapi/design-system';
 import { useState } from 'react';
+import pkg from '../../../package.json';
 
 export default function LocationTextInput({
   handleSetLocation,
@@ -13,10 +14,19 @@ export default function LocationTextInput({
   const fetchData = async () => {
     setLoading(true);
 
+    const headers = new Headers({
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      'User-Agent': `${pkg.name}/${pkg.version}`,
+    });
+
     const url = encodeURI(`https://nominatim.openstreetmap.org/search?format=json&q=${address}`);
 
     try {
-      const response = await fetch(url);
+      const response = await fetch(url, {
+        method: 'GET',
+        headers,
+      });
       const data = await response.json();
       if (Array.isArray(data) && data.length > 0) {
         const { lat, lon } = data[0];
